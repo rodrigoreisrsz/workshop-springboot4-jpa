@@ -1,0 +1,13 @@
+package com.reis.reisworkshop;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ReisworkshopApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
