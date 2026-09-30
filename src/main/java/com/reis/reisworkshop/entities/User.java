@@ -1,6 +1,7 @@
 package com.reis.reisworkshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,6 +22,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore // lazy loading - nao estourar memoria do pc no lado para muitos
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 
