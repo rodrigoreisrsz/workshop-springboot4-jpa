@@ -2,10 +2,12 @@ package com.reis.reisworkshop.config;
 
 import com.reis.reisworkshop.entities.Category;
 import com.reis.reisworkshop.entities.Order;
+import com.reis.reisworkshop.entities.Product;
 import com.reis.reisworkshop.entities.User;
 import com.reis.reisworkshop.entities.enums.OrderStatus;
 import com.reis.reisworkshop.repository.CategoryRepository;
 import com.reis.reisworkshop.repository.OrderRepository;
+import com.reis.reisworkshop.repository.ProductRepository;
 import com.reis.reisworkshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String... args) throws Exception {
         User use2r = new User( "Ray", "ray@gmail.com", "0343000", "123456");
@@ -38,8 +43,11 @@ public class TestConfig implements CommandLineRunner{
 
         Category cat1 = new Category(null, "eletronicos");
         Category cat2 = new Category(null, "hardware");
+
+        Product product1 = new Product(null, "MacBook", "macbook pro 5", 5000.0, "src/main/java/com/reis/reisworkshop/img/captura-de-tela-2026-05-07-a-s-14-53-copiar-69fcd1c79a822.jpg");
         userRepository.saveAll(Arrays.asList(use2r, use3r));
         orderRepository.saveAll(Arrays.asList(o1,o2));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2));
+        productRepository.saveAll(Arrays.asList(product1));
     }
 }
