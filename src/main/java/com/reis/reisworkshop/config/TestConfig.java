@@ -45,9 +45,18 @@ public class TestConfig implements CommandLineRunner{
         Category cat2 = new Category(null, "hardware");
 
         Product product1 = new Product(null, "MacBook", "macbook pro 5", 5000.0, "src/main/java/com/reis/reisworkshop/img/captura-de-tela-2026-05-07-a-s-14-53-copiar-69fcd1c79a822.jpg");
+        Product product2 = new Product(null, "ryzen", "ryen5", 5000.0, "src/main/java/com/reis/reisworkshop/img/captura-de-tela-2026-05-07-a-s-14-53-copiar-69fcd1c79a822.jpg");
+        Product product3 = new Product(null, "ryzen", "ryen5", 5000.0, "src/main/java/com/reis/reisworkshop/img/captura-de-tela-2026-05-07-a-s-14-53-copiar-69fcd1c79a822.jpg");
         userRepository.saveAll(Arrays.asList(use2r, use3r));
         orderRepository.saveAll(Arrays.asList(o1,o2));
+
+        product1.getCategories().add(cat1);
+        product2.getCategories().add(cat2);
+        product3.getCategories().add(cat1);
+
         categoryRepository.saveAll(Arrays.asList(cat1, cat2));
-        productRepository.saveAll(Arrays.asList(product1));
+        productRepository.saveAll(Arrays.asList(product1, product2, product3));
+
+
     }
 }
