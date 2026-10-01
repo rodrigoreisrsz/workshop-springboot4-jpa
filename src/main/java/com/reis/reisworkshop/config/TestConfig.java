@@ -1,8 +1,10 @@
 package com.reis.reisworkshop.config;
 
+import com.reis.reisworkshop.entities.Category;
 import com.reis.reisworkshop.entities.Order;
 import com.reis.reisworkshop.entities.User;
 import com.reis.reisworkshop.entities.enums.OrderStatus;
+import com.reis.reisworkshop.repository.CategoryRepository;
 import com.reis.reisworkshop.repository.OrderRepository;
 import com.reis.reisworkshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
         User use2r = new User( "Ray", "ray@gmail.com", "0343000", "123456");
@@ -30,7 +35,11 @@ public class TestConfig implements CommandLineRunner{
 
         Order o1 = new Order(null, Instant.parse("2026-09-30T10:30:33Z"), OrderStatus.PAID, use2r);
         Order o2 = new Order(null, Instant.parse("2026-09-30T13:03:33Z"), OrderStatus.WAITING_PAYMENT,use3r);
+
+        Category cat1 = new Category(null, "eletronicos");
+        Category cat2 = new Category(null, "hardware");
         userRepository.saveAll(Arrays.asList(use2r, use3r));
         orderRepository.saveAll(Arrays.asList(o1,o2));
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2));
     }
 }
