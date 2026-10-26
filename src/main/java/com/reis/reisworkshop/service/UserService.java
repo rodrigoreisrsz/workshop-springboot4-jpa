@@ -2,6 +2,7 @@ package com.reis.reisworkshop.service;
 
 import com.reis.reisworkshop.entities.User;
 import com.reis.reisworkshop.repository.UserRepository;
+import com.reis.reisworkshop.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class UserService {
     public User findById(long id){
         //User user = service.findById(id);
         Optional<User> obj = userRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
     public User insert(User obj){
